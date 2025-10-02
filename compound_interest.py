@@ -27,14 +27,14 @@ def func(mid2):
 remainingdebt = float(input("Enter Principal Amount:"))
 interest = float(input("Enter Monthly Interest Rate [percentage value with a dot]:"))
 maturity = 12 ### WE ENTERED THE NUMBER OF MONTHS IN WHICH THE DEBT WILL BE DISTRIBUTED (MONTHS IN 1 YEAR) AS A VARIABLE..
-yedek = 0
-for i in range(0,maturity): ### THIS BLOCK IS THE PART OF APPLYING COMPOUND INTEREST TO THE PRINCIPAL..
-	taksit=float(remainingdebt/(maturity - i))
-	yedek += taksit 	### X. MONTH'S DEBT IS HELD (INTEREST WILL NOT BE ACCRUED FOR THE FIRST MONTH)
-	remainingdebt = remainingdebt - taksit	### ALL REMAINING DEBT AFTER MONTH X IS BEING DETERMINED
+backup = 0
+for i in range(0, maturity): ### THIS BLOCK IS THE PART OF APPLYING COMPOUND INTEREST TO THE PRINCIPAL..
+	installment=float(remainingdebt/(maturity - i))
+	backup += installment 	### X. MONTH'S DEBT IS HELD (INTEREST WILL NOT BE ACCRUED FOR THE FIRST MONTH)
+	remainingdebt = remainingdebt - installment	### ALL REMAINING DEBT AFTER MONTH X IS BEING DETERMINED
 	remainingdebt = remainingdebt + ((remainingdebt * interest)/100) ### ALL DEBT ENTRY AFTER MONTH X IS SUBJECT TO THE INTEREST PERCENTAGE
 
-remainingdebt = yedek
+remainingdebt = backup
 monthlygrossdebt = remainingdebt/maturity
 monthlyincreased = monthlygrossdebt%float(0.01)
 if monthlyincreased>0:
